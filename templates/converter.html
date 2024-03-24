@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Конвертер .txt в .doc</title>
+    <title>Сonverter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh;
+            margin: 0;
+            flex-direction: column;
+
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        form {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <div class="title">Конвертер .txt в .doc</div>
     <form id="uploadForm" action="/uploader" method="post" enctype="multipart/form-data">
         <input type="file" id="fileInput" name="file">
         <button type="submit">Конвертировать</button>
     </form>
+
 
 </body>
 </html>

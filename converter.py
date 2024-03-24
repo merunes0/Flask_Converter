@@ -1,8 +1,10 @@
-#TODO добавить конвертацию .pdf в .word
+# TODO converter.py
+#  Добавить конвертацию .pdf в .word
+# TODO converter.html
+#  Сделать так, чтобы с переодичностью в 10 секунд .txt менялся на .doc и наоборот
 
 from flask import Flask, request, render_template
 from docx import Document
-
 
 app = Flask(__name__, template_folder='templates')
 
