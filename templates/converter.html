@@ -24,12 +24,20 @@
     </style>
 </head>
 <body>
-    <div class="title">Конвертер .txt в .doc</div>
+    <div class="title">Конвертер .txt в другие форматы</div>
     <form id="uploadForm" action="/uploader" method="post" enctype="multipart/form-data">
+        <label for="fileInput">Выберите файл для конвертации:</label>
         <input type="file" id="fileInput" name="file">
+        <label for="formatSelect">Конвертировать в:</label>
+        <select id="formatSelect" name="format">
+            <option value="md">.md</option>
+            <option value="docx">.docx</option>
+            <option value="doc">.doc</option>
+
+
+        </select>
         <button type="submit">Конвертировать</button>
     </form>
-
 
 </body>
 </html>

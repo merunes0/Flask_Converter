@@ -1,7 +1,7 @@
-# TODO converter.py
-#  Добавить конвертацию .pdf в .word
-# TODO converter.html
+# TODO converter.html/converter.py
 #  Сделать так, чтобы с переодичностью в 10 секунд .txt менялся на .doc и наоборот
+# TODO converter.py
+#  Узнать можно ли форматировать .docx/.doc в .txt с помощью uft-8
 
 from flask import Flask, request, render_template
 from docx import Document
@@ -18,16 +18,41 @@ def home():
 def upload_file():
     if 'file' in request.files:
         f = request.files['file']
+
+        # File format check
+        if not f.filename.endswith('.txt'):
+            return 'Выбранный формат не является .txt форматом'
+
         file_content = f.read()
+        file_decode = file_content.decode("utf-8")
 
         new_doc = Document()
-        new_doc.add_paragraph(
-            file_content.decode("utf-8"))
+        new_doc.add_paragraph(file_decode)
 
-        new_file_path = f.filename.replace(".txt", ".doc")
-        new_doc.save(new_file_path)
-        return render_template("result.html", original_filename=f.filename, new_filename=new_file_path)
-    return 'Файл не выбран'
+        # Encode Fix for Markdown (.md)
+        lines = file_decode.split('\n')
+        for line in lines:
+            new_doc.add_paragraph(line)
+
+        # File format
+
+        if 'format' in request.values:
+            selected_format = request.values['format']
+            if selected_format == 'docx':
+                file_path = f.filename.replace(".txt", ".docx")
+                new_doc.save(file_path)
+            elif selected_format == 'md':
+                file_path = f.filename.replace(".txt", ".md")
+                with open(file_path, 'w') as md_file:
+                    for line in lines:
+                        md_file.write(line + '\n')
+
+            else:
+                return 'Неверно выбран формат конвертации'
+
+            return render_template("result.html", original_filename=f.filename, new_filename=file_path)
+
+    return 'Error: File not selected or unsupported format'
 
 
 if __name__ == '__main__':
