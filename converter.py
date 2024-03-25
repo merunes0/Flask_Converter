@@ -3,9 +3,17 @@
 # TODO converter.py
 #  Узнать можно ли форматировать .docx/.doc в .txt с помощью uft-8
 
+import os
 from flask import Flask, request, render_template
 from docx import Document
+from dotenv import load_dotenv
 
+# Env variable
+load_dotenv()
+host = os.getenv("HOST")
+port = os.getenv("PORT")
+
+# Start
 app = Flask(__name__, template_folder='templates')
 
 
@@ -56,4 +64,5 @@ def upload_file():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    context = (host, port)
+    app.run(debug=True, port=port, host=host)
