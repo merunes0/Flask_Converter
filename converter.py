@@ -1,7 +1,4 @@
-# TODO converter.html/converter.py
-#  Сделать так, чтобы с переодичностью в 10 секунд .txt менялся на .doc и наоборот
-# TODO converter.py
-#  Узнать можно ли форматировать .docx/.doc в .txt с помощью uft-8
+
 
 import os
 from flask import Flask, request, render_template

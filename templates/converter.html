@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <title>Конвертер</title>
     <style>
@@ -12,13 +12,42 @@
             margin: 0;
             flex-direction: column;
             font-size: 24px;
+            background-color: #ced8e1;
+
+            margin: 71px 174px 24px 0;
+            font-family: InriaSerif;
+            font-size: 25px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #102b3e;
         }
 
         .title {
             text-align: center;
             margin-bottom: 20px;
-            font-size: 30px;
+
+            width: 652px;
+            height: 54px;
+            margin: 0 0 71px 10px;
+            font-family: InriaSerif;
+            font-size: 45px;
             font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            border-radius: 20px;
+            color: #fff;
+
+            width: 500px;
+            height: 120px;
+            margin: 0 0 49px;
+            padding: 100px 51px 55px 41px;
+            background-color: #102b3e;
         }
 
         form {
@@ -26,18 +55,36 @@
         }
 
         button {
-            font-size: 20px;
+            text-align: center;
+            width: 265px;
+            height: 50px;
+            margin: 0px 219px 0;
+            padding: 5px 60px 34px 35px;
+            border-radius: 20px;
+            background-color: #102b3e;
+            width: 211px;
+            height: 59px;
+            font-family: InriaSerif;
+            font-size: 40px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    <div class="title">Конвертер .txt в другие форматы</div>
+    <div class="title">Convert .txt to other formats</div>
     <form id="uploadForm" action="/uploader" method="post" enctype="multipart/form-data">
         <label for="fileInput">Выберите файл для конвертации:</label>
+        <br>
         <input type="file" id="fileInput" name="file">
         <br>
         <br>
         <label for="formatSelect">Конвертировать в:</label>
+        <br>
         <select id="formatSelect" name="format">
             <option value="md">.md</option>
             <option value="docx">.docx</option>
@@ -45,7 +92,7 @@
         </select>
         <br>
         <br>
-        <button type="submit">Конвертировать</button>
+        <button type="submit">Convert</button>
     </form>
 </body>
 </html>
